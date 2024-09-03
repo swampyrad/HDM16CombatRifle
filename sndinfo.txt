@@ -1,0 +1,13 @@
+weapons/m16 M16GFIR
+
+$random misc/casing_556 
+{   misc/556_casing1 
+    misc/556_casing2 
+    misc/556_casing3 
+}
+$limit misc/556_casing 2
+$volume misc/556_casing 0.5
+
+misc/556_casing1 cas5561 
+misc/556_casing2 cas5562 
+misc/556_casing3 cas5563 

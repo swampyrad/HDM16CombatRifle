@@ -1,0 +1,17 @@
+// M16 Menu
+
+AddOptionMenu "OptionsMenu"
+{
+    Submenu "M16 Combat Rifle Options", "M16Options"
+}
+
+OptionMenu M16Options
+{
+    Title "--- M16 Combat Rifle Options ---"
+	Option "Include 5.56 in ammo spawns:", "M16_Allow556AmmoSpawns", "OnOff"
+	Option "Replace ZM66 spawns with M16s:", "M16_ReplaceZM66Spawns", "OnOff"
+	Option "Replace Chaingun spawns with M16s:", "M16_ReplaceChaingunSpawns", "OnOff"
+    Option "Replace 4mm mag spawns with 5.56 mags:", "M16_Replace4mmMagSpawns", "OnOff"
+
+}
+

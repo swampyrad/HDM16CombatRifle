@@ -1,0 +1,18 @@
+M16 Credits
+------------
+
+M16 sprites and sounds from Realm667
+
+5.56 casing sounds from bigsoundbank.com
+
+(original credits copied from the wbesite)
+Submitted: JoeyTD
+Decorate: Xim
+Sprites: Terminator Rampage
+Sounds: Unknown
+Sprite Edit: JoeyTD, Xim
+
+M16 weapon code borrowed from Hideous 
+Destructor by MatthewTheGlutton/mc776
+
+Additional sprite work by Swampyrad

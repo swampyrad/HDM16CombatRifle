@@ -1,0 +1,78 @@
+
+sprite M16PA0, 60, 14{
+    offset 30, 14
+    patch M16PA0, 0, 0
+}
+
+sprite M16PB0, 60, 14{
+    offset 30, 14
+    patch M16PB0, 0, 0
+}
+
+sprite M16MA0,7,14
+{
+	offset 4,14
+	patch M16MA0, 0, 0
+}
+
+graphic M16MNORM,7,14
+{
+	offset 4,14
+	patch M16MA0,0,0{}
+}
+
+graphic M16MGREY,7,14
+{
+	offset 4,14
+	patch M16MA0,0,0{
+	    translation "0:255=%[0,0,0]:[1.8,1.8,1.8]"
+	    }
+}
+
+sprite M16MB0,7,14{
+	offset 4,14
+	patch M16MB0,0,0
+}
+
+sprite M16MEMPTY,14,7{
+	offset 7,7
+	patch M16MB0, 0, 0{
+	    rotate 270
+	    }
+}
+
+sprite 556BA0, 23, 13{
+    offset 12, 13
+    patch 556BA0, 0, 0
+}
+
+
+sprite BRS5A3A7, 4, 1{
+    offset 2, 1
+    patch BRS5A3A7, 0, 0
+}
+
+sprite BRS5A4A6, 2, 1{
+    offset 1, 1
+    patch BRS5A4A6, 0, 0
+}
+
+sprite BRS5A1A5, 1, 1{
+    offset 0, 1
+    patch BRS5A1A5, 0, 0
+}
+
+sprite BRS5A2A8, 2, 1{
+    offset 1, 1
+    patch BRS5A2A8, 0, 0
+}
+
+sprite T556A0, 10, 5{
+    offset 5, 5
+    patch T556A0, 0, 0
+}
+
+
+
+
+

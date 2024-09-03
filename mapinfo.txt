@@ -1,0 +1,1 @@
+GameInfo {AddEventHandlers = "M16_Spawner"} 

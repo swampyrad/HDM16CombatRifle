@@ -1,0 +1,1 @@
+alias M16_resetcvars "resetcvar M16_ZM66SpawnBias;resetcvar M16_ChaingunSpawnBias;resetcvar M16_MagSpawnBias;resetcvar M16_AmmoSpawnBias;"

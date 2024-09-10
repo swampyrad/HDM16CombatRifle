@@ -1,17 +1,65 @@
 // M16 Menu
-
 AddOptionMenu "OptionsMenu"
-{
-    Submenu "M16 Combat Rifle Options", "M16Options"
-}
+{Submenu "M16 Combat Rifle Options", "M16Options"}
+
+//
+AddOptionMenu "HDAddonMenu" 
+{Submenu "M16 Combat Rifle Options", "M16Options"}
 
 OptionMenu M16Options
 {
-    Title "--- M16 Combat Rifle Options ---"
-	Option "Include 5.56 in ammo spawns:", "M16_Allow556AmmoSpawns", "OnOff"
-	Option "Replace ZM66 spawns with M16s:", "M16_ReplaceZM66Spawns", "OnOff"
-	Option "Replace Chaingun spawns with M16s:", "M16_ReplaceChaingunSpawns", "OnOff"
-    Option "Replace 4mm mag spawns with 5.56 mags:", "M16_Replace4mmMagSpawns", "OnOff"
+    Title "----- M16 Combat Rifle Options -----"
+
+    StaticText "Notice:", "Green"
+    StaticText  "Setting 'spawn rate' to Replace All will suppress", "white"
+    StaticText  "spawns of that given type.", "white"
+    StaticText ""
+
+    StaticText "Weapon Spawn Options", "Green"
+ 
+    //ZM66 spawns
+    StaticText "Control the spawn rate of M16s on ZM66 spawns", "white"
+	Option "Spawn Rate: ", "M16_ZM66SpawnBias", "SpawnBias"
+    SafeCommand "Reset spawn options", "resetcvar M16_ZM66SpawnBias"
+    StaticText ""
+
+    //Chaingun spawns
+    StaticText "Control the spawn rate of M16s on Chaingun spawns", "white"
+	Option "Spawn Rate: ", "M16_ChaingunSpawnBias", "SpawnBias"
+    SafeCommand "Reset spawn options", "resetcvar M16_ChaingunSpawnBias"
+    StaticText ""
+    
+    StaticText "Ammo Spawn Options", "Green"
+
+    //5.56 magazines
+    StaticText "Control the spawn rate of M16 mags on Clip spawns", "white"
+	Option "Spawn Rate: ", "M16_MagSpawnBias", "SpawnBias"
+    SafeCommand "Reset spawn options", "resetcvar M16_MagSpawnBias"
+    StaticText ""
+
+    //5.56 ammoboxes
+    StaticText "Control the spawn rate of 5.56 ammo on Clipbox spawns", "white"
+	Option "Spawn Rate: ", "M16_AmmoSpawnBias", "SpawnBias"
+    SafeCommand "Reset spawn options", "resetcvar M16_AmmoSpawnBias"
+    StaticText ""
+    
+    //master reset
+    SafeCommand "Reset M16 options", "M16_resetcvars"
 
 }
 
+OptionValue "SpawnBias"
+{
+	-1,    "Disabled"
+	 0,    "Replace All"
+	 2,    "1 in 3"
+	 4,    "1 in 5"
+	 9,    "1 in 10"
+	 14,   "1 in 15"
+	 19,   "1 in 20"
+	 24,   "1 in 25"
+	 49,   "1 in 50"
+	 99,   "1 in 100"
+	 149,  "1 in 150"
+	 199,  "1 in 200"
+}

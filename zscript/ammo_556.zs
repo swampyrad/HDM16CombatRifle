@@ -1,20 +1,20 @@
 // ------------------------------------------------------------
 // 5.56x45 NATO Ammo
 // ------------------------------------------------------------
-const ENC_M16MAG=12;
+const ENC_M16MAG=11;
 const ENC_M16MAG_EMPTY=ENC_M16MAG*0.3;
 const ENC_556_LOADED=(ENC_M16MAG*0.7)/20.;
-const ENC_556=ENC_556_LOADED*1.4;
+const ENC_556=ENC_556_LOADED*1.35;
 const ENC_M16MAG_LOADED=ENC_M16MAG_EMPTY*0.5; 
 
 class HDB_556:HDBulletActor{
 	default{
 		pushfactor 0.3;
 		mass 40;
-		speed HDCONST_MPSTODUPT*950;
-		accuracy 666;
+		speed HDCONST_MPSTODUPT*960;
+		accuracy 600;
 		stamina 556;
-		woundhealth 20;
+		woundhealth 10;
 		hdbulletactor.hardness 3;
 		hdbulletactor.distantsound "world/riflefar";
 	}
@@ -58,8 +58,8 @@ class HDM16Mag20:HDMagAmmo{
 		hdmagammo.roundtype "HD556Ammo";
 		hdmagammo.roundbulk ENC_556_LOADED;
 		hdmagammo.magbulk ENC_M16MAG_EMPTY;
-		tag "M16 magazine";
-		inventory.pickupmessage "Picked up an M16 magazine.";
+		tag "M16 20-round magazine";
+		inventory.pickupmessage "Picked up an M16 20-round magazine.";
 		hdpickup.refid "520";
 	}
 	override string,string,name,double getmagsprite(int thismagamt){
@@ -83,7 +83,7 @@ class HDM16Mag20:HDMagAmmo{
 class HDSpent556:HDDebris{
 	default{
 		bouncesound "misc/casing_556";scale 0.6;
-        bouncefactor 0.5; maxstepheight 0.6;
+        bouncefactor 0.4; maxstepheight 0.6;
         bouncetype "doom";
 	}
 	states{
@@ -132,7 +132,6 @@ class HDM16EmptyMag:IdleDummy{
 	}
 }
 
-
 class HD556BoxPickup:HDUPK{
 	default{
 		//$Category "Ammo/Hideous Destructor/"
@@ -140,7 +139,7 @@ class HD556BoxPickup:HDUPK{
 		//$Sprite "556BA0"
 
 		scale 0.5;
-		hdupk.amount 50;
+		hdupk.amount 100;
 		hdupk.pickupsound "weapons/pocket";
 		hdupk.pickupmessage "Picked up some 5.56 ammo.";
 		hdupk.pickuptype "HD556Ammo";

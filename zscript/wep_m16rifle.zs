@@ -19,7 +19,7 @@ class HDM16:HDWeapon{
 		weapon.bobspeed 2.5;
 		scale 0.65;
 		inventory.pickupmessage "You got the M16!";
-		hdweapon.barrelsize 24,0.5,1;
+		hdweapon.barrelsize 30,0.5,1;
 		hdweapon.refid "M16";
 		tag "M16 combat rifle";
 		inventory.icon "M16PA0";
@@ -38,8 +38,8 @@ class HDM16:HDWeapon{
 	
 	override double weaponbulk(){
 		int mg=weaponstatus[SMGS_MAG];
-		if(mg<0)return 100;
-		else return (100+ENC_M16MAG_LOADED)+mg*ENC_556_LOADED;
+		if(mg<0)return 110;
+		else return (110+ENC_M16MAG_LOADED)+mg*ENC_556_LOADED;
 	}
 	
 	override void failedpickupunload(){
@@ -128,7 +128,7 @@ class HDM16:HDWeapon{
 				-16+bob.x,-4+bob.y,32,16,
 				sb.DI_SCREEN_CENTER
 			);
-			bobb.y=clamp(bobb.y,-19,19);
+		//	bobb.y=clamp(bobb.y,-19,19);
 			sb.drawimage(
 				"m16fsite",(0,-9)+bobb,sb.DI_SCREEN_CENTER|sb.DI_ITEM_TOP
 			);
@@ -197,8 +197,7 @@ class HDM16:HDWeapon{
 			if(invoker.weaponstatus[SMGS_CHAMBER]==2)A_GunFlash();
 			else setweaponstate("chamber_manual");
 		}
-		#### A 1;
-		#### A 0{
+		#### A 2{
 			if(invoker.weaponstatus[SMGS_CHAMBER]==1){
 				A_EjectCasing("HDSpent556",
 					frandom(-1,2),
@@ -211,7 +210,6 @@ class HDM16:HDWeapon{
 				invoker.weaponstatus[SMGS_MAG]--;
 				invoker.weaponstatus[SMGS_CHAMBER]=2;
 			}
-			if(invoker.weaponstatus[SMGS_AUTO]==2)A_SetTics(1);
 		}
 		#### A 0 A_ReFire();
 		goto ready;
@@ -234,11 +232,8 @@ class HDM16:HDWeapon{
 			HDFlashAlpha(-200);
 			A_Light1();
 		}
-		TNT1 A 0 A_MuzzleClimb(-frandom(0.3, 0.5),
-		                       -frandom(0.5, 1.0),
-                               -frandom(0.8, 1.5),
-		                       -frandom(0.4, 0.9),
-		                       -frandom(0.2, 0.4)
+		TNT1 A 0 A_MuzzleClimb(-frandom(0.4, 0.5),-frandom(0.6, 0.7),
+		                       -frandom(0.6, 0.7),-frandom(0.9, 1.1)
 		                       );
 		goto lightdone;
 
@@ -249,7 +244,7 @@ class HDM16:HDWeapon{
 		#### A 1 offset(5,38);
 		#### A 2 offset(10,42);
 		#### A 4 offset(20,46){
-		    A_StartSound("weapons/smgmagclick",8);
+		    A_StartSound("weapons/rifleclick",8);
 			class<actor>which=invoker.weaponstatus[SMGS_CHAMBER]>1?"HDLoose556":"HDSpent556";
 			invoker.weaponstatus[SMGS_CHAMBER]=0;
 			A_SpawnItemEx(which,
@@ -275,7 +270,7 @@ class HDM16:HDWeapon{
 			if(countinv("HD556Ammo")){
 				A_TakeInventory("HD556Ammo",1,TIF_NOTAKEINFINITE);
 				invoker.weaponstatus[SMGS_CHAMBER]=2;
-				A_StartSound("weapons/smgchamber",8);
+				A_StartSound("weapons/rifchamber",8);
 			}else A_SetTics(4);
 		}
 		#### A 3 offset(9,76);
@@ -412,7 +407,7 @@ class HDM16:HDWeapon{
 	}
 }
 
-class HDM16Random:IdleDummy{
+class HDM16Random:IdleDummy{//comes with 4 mags and a grenade
 	states{
 	spawn:
 		TNT1 A 0 nodelay{
@@ -422,9 +417,12 @@ class HDM16Random:IdleDummy{
 			lll.vel=vel;
 			for(int i=0;i<5;i++)lll.args[i]=args[i];
 			if(!random(0,2))lll.weaponstatus[SMGS_SWITCHTYPE]=random(0,3);
-            Spawn("HDM16Mag20",pos,ALLOW_REPLACE);	
-            Spawn("HDM16Mag20",pos,ALLOW_REPLACE);	
-	
+            
+            A_SpawnItemEx("HDM16Mag20",-4,2,flags:SXF_NOCHECKPOSITION);
+		    A_SpawnItemEx("HDM16Mag20",-4,4,flags:SXF_NOCHECKPOSITION);
+		    A_SpawnItemEx("FragP",0,2,flags:SXF_NOCHECKPOSITION);
+		    A_SpawnItemEx("HDM16Mag20",4,2,flags:SXF_NOCHECKPOSITION);
+		    A_SpawnItemEx("HDM16Mag20",4,4,flags:SXF_NOCHECKPOSITION);
 		}stop;
 	}
 }

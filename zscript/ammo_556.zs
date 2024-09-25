@@ -36,7 +36,7 @@ class HD556Ammo:HDRoundAmmo{
 		inventory.icon "T556A0";
 	}
 	override void SplitPickup(){
-		SplitPickupBoxableRound(10,50,"HD556BoxPickup","T556A0","BRS5A0");
+		SplitPickupBoxableRound(10,100,"HD556BoxPickup","T556A0","BRS5A0");
 	}
 	override void GetItemsThatUseThis(){
 		itemsthatusethis.push("HDM16");
